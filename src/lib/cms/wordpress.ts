@@ -13,7 +13,7 @@ const POST_FIELDS = gql`
     categories { nodes { slug name description } }
     tags { nodes { name } }
     featuredImage { node { sourceUrl altText } }
-    seo { title metaDesc }
+    dvSeo { title metaDesc }
   }
 `;
 
@@ -32,7 +32,7 @@ const mapPost = (n: WpNode): Post => ({
   cover: n.featuredImage?.node?.sourceUrl,
   coverAlt: n.featuredImage?.node?.altText,
   readingMinutes: readingMinutes(n.content ?? ""),
-  seo: { title: n.seo?.title, description: n.seo?.metaDesc },
+  seo: { title: n.dvSeo?.title, description: n.dvSeo?.metaDesc },
 });
 
 export const wordpress: CmsSource = {
@@ -55,7 +55,7 @@ export const wordpress: CmsSource = {
     return d.categories.nodes.map(mapCategory);
   },
   async getAuthors() {
-    const d = await client().request<{ users: { nodes: WpNode[] } }>(gql`{ users(first: 50, where: { hasPublishedPosts: POST }) { nodes { slug name description avatar { url } } } }`);
+    const d = await client().request<{ users: { nodes: WpNode[] } }>(gql`{ users(first: 50, where: { hasPublishedPosts: [POST] }) { nodes { slug name description avatar { url } } } }`);
     return d.users.nodes.map(mapAuthor);
   },
   async getJobs(opts = {}) {

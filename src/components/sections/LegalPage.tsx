@@ -14,7 +14,7 @@ export function LegalPage({ title, path, lede, updated, children }: { title: str
           <nav aria-label="Regulatory pages" className="self-start lg:sticky lg:top-28">
             <ul className="grid gap-1 text-[14px]">{links.map(([l, h]) => <li key={h}><Link href={h} aria-current={h === path ? "page" : undefined} className={h === path ? "block rounded-lg bg-paper px-3 py-2 font-medium text-indigo" : "block rounded-lg px-3 py-2 text-[#3f3d5c] hover:bg-paper"}>{l}</Link></li>)}</ul>
           </nav>
-          <div className="prose-dv max-w-[76ch]">{children}{updated && <p className="!mt-12 text-[13px] text-mist">Last updated: {updated}</p>}</div>
+          <div className="prose-dv min-w-0 max-w-[76ch]">{children}{updated && <p className="!mt-12 text-[13px] text-mist">Last updated: {updated}</p>}</div>
         </div>
       </Section>
     </Shell>

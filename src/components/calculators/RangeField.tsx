@@ -14,7 +14,11 @@ export function RangeField({ label, value, onChange, min, max, step = 1, prefix,
         <div className="flex items-center rounded-lg border border-line bg-white px-3 py-1.5 focus-within:ring-2 focus-within:ring-raspberry/50">
           {prefix && <span className="mr-1 text-[14px] text-mist">{prefix}</span>}
           <input id={id} inputMode="decimal" value={Number.isFinite(value) ? String(value) : ""}
-            onChange={(e) => { const n = parseFloat(e.target.value.replace(/[^\d.]/g, "")); onChange(Number.isFinite(n) ? n : 0); }}
+            onChange={(e) => {
+              const raw = e.target.value.replace(min < 0 ? /[^\d.-]/g : /[^\d.]/g, "");
+              const n = parseFloat(raw);
+              onChange(Number.isFinite(n) ? Math.min(max * 10, n) : 0);
+            }}
             className="w-24 bg-transparent text-right text-[15px] font-medium text-indigo outline-none" />
           {suffix && <span className="ml-1 text-[14px] text-mist">{suffix}</span>}
         </div>

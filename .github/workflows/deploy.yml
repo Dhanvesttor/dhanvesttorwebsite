@@ -1,0 +1,48 @@
+# Builds on every push to main and ships the standalone bundle to the Hostinger VPS.
+# Repository secrets needed: VPS_HOST, VPS_USER, VPS_SSH_KEY, and the app env vars listed in .env.example.
+name: Deploy
+on:
+  push: { branches: [main] }
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+        env:
+          WORDPRESS_GRAPHQL_URL: ${{ secrets.WORDPRESS_GRAPHQL_URL }}
+          NEXT_PUBLIC_SITE_URL: https://dhanvesttor.com
+      - name: Assemble release
+        run: |
+          mkdir -p release
+          cp -r .next/standalone/. release/
+          mkdir -p release/.next && cp -r .next/static release/.next/static
+          cp -r public release/public
+          cp -r content release/content
+          cp ecosystem.config.cjs release/
+      - name: Upload and switch
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: release/*
+          target: /var/www/dhanvesttor/releases/${{ github.sha }}
+          strip_components: 1
+      - name: Restart
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cd /var/www/dhanvesttor
+            cp shared/.env releases/${{ github.sha }}/.env
+            ln -sfn releases/${{ github.sha }} current
+            pm2 startOrReload current/ecosystem.config.cjs --update-env
+            ls -1dt releases/* | tail -n +6 | xargs rm -rf

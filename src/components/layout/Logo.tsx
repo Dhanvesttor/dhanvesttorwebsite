@@ -9,11 +9,11 @@ export function Logo({ className, variant = "full", priority }: { className?: st
       {variant === "full" && <Image src="/brand/logo.png" alt="Dhanvesttor — Her Money, Her Growth" width={1600} height={873} priority={priority} className="h-14 w-auto sm:h-16" />}
       {variant === "compact" && (
         <>
-          <Image src="/brand/mark.png" alt="" width={560} height={510} priority={priority} className="h-8 w-auto" />
+          <Image src="/brand/mark.png" alt="" width={512} height={470} priority={priority} className="h-8 w-auto" />
           <Image src="/brand/wordmark.png" alt="Dhanvesttor" width={1600} height={150} priority={priority} className="h-[14px] w-auto" />
         </>
       )}
-      {variant === "mark" && <Image src="/brand/mark.png" alt="Dhanvesttor" width={560} height={510} className="h-9 w-auto" />}
+      {variant === "mark" && <Image src="/brand/mark.png" alt="Dhanvesttor" width={512} height={470} className="h-9 w-auto" />}
     </Link>
   );
 }
