@@ -1,0 +1,17 @@
+{
+  "asOf": "September 2026",
+  "note": "Data in the format prescribed by SEBI for portfolio managers. Updated monthly by the Compliance Officer.",
+  "rows": [
+    { "receivedFrom": "Directly from investors", "pendingAtStart": 0, "received": 0, "resolved": 0, "totalPending": 0, "pendingOver3Months": 0, "avgResolutionDays": 0 },
+    { "receivedFrom": "SEBI (SCORES)", "pendingAtStart": 0, "received": 0, "resolved": 0, "totalPending": 0, "pendingOver3Months": 0, "avgResolutionDays": 0 },
+    { "receivedFrom": "Other sources", "pendingAtStart": 0, "received": 0, "resolved": 0, "totalPending": 0, "pendingOver3Months": 0, "avgResolutionDays": 0 }
+  ],
+  "trend": [
+    { "month": "Apr 2026", "carried": 0, "received": 0, "resolved": 0, "pending": 0 },
+    { "month": "May 2026", "carried": 0, "received": 0, "resolved": 0, "pending": 0 },
+    { "month": "Jun 2026", "carried": 0, "received": 0, "resolved": 0, "pending": 0 },
+    { "month": "Jul 2026", "carried": 0, "received": 0, "resolved": 0, "pending": 0 },
+    { "month": "Aug 2026", "carried": 0, "received": 0, "resolved": 0, "pending": 0 },
+    { "month": "Sep 2026", "carried": 0, "received": 0, "resolved": 0, "pending": 0 }
+  ]
+}

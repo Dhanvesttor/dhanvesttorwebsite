@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Dhanvesttor is a SEBI-registered portfolio manager in Kolkata. Personal portfolios, curated mutual funds and a community that teaches the language of money.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-IN" className={`${display.variable} ${sans.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">{children}</body>
