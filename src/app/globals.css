@@ -94,3 +94,9 @@
 .prose-dv th, .prose-dv td { border-bottom: 1px solid var(--color-line); padding: .6em .4em; text-align: left; }
 .prose-dv img { border-radius: 6px 28px 6px 6px; }
 .prose-dv strong { color: var(--color-ink); }
+
+/* Emphasis on dark sections switches to marigold so it never disappears into indigo */
+.bg-indigo :is(h1, h2, h3, blockquote) em,
+.bg-ink :is(h1, h2, h3, blockquote) em,
+.bg-indigo-deep :is(h1, h2, h3, blockquote) em { color: var(--color-marigold); }
+.bg-terracotta :is(h1, h2, h3) em { color: var(--color-ivory); }
