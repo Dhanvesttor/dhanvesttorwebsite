@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/* Dhanvesttor design tokens — see docs/brand/direction-board.html */
+@theme {
+  --color-ivory: #FBF7F0;
+  --color-paper: #F4EDE1;
+  --color-sand: #E9DCC7;
+  --color-indigo: #2E2A6E;
+  --color-indigo-deep: #221F55;
+  --color-raspberry: #DE4D7A;
+  --color-raspberry-deep: #C23B66;
+  --color-marigold: #F8C233;
+  --color-terracotta: #C8876A;
+  --color-ink: #1D1B3A;
+  --color-mist: #6E6C86;
+  --color-line: rgba(29, 27, 58, 0.12);
+
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-hanken), system-ui, sans-serif;
+
+  --radius-matte: 18px;
+  --shadow-soft: 0 30px 80px -40px rgba(29, 27, 58, 0.35);
+  --ease-out-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+  h1 em, h2 em, h3 em { font-style: italic; font-weight: 400; color: var(--color-indigo); }
+  :focus-visible { outline: 2px solid var(--color-raspberry); outline-offset: 3px; border-radius: 4px; }
+  ::selection { background: rgba(222, 77, 122, 0.2); }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  }
+}
+
+@utility hairline {
+  height: 3px;
+  width: 88px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--color-raspberry) 0 55%, var(--color-marigold) 55% 100%);
+}
+
+@utility matte {
+  border-radius: 6px 28px 6px 6px;
+  overflow: hidden;
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-raspberry);
+}
+
+@utility grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+}
+
+/* Prose for CMS HTML */
+.prose-dv { max-width: 68ch; font-size: 1.0625rem; }
+.prose-dv > * + * { margin-top: 1.1em; }
+.prose-dv h2 { font-size: 2rem; margin-top: 2.2em; }
+.prose-dv h3 { font-size: 1.5rem; margin-top: 1.8em; }
+.prose-dv p, .prose-dv li { color: #3f3d5c; }
+.prose-dv a { color: var(--color-raspberry); text-decoration: underline; text-underline-offset: 3px; }
+.prose-dv ul { list-style: disc; padding-left: 1.4em; }
+.prose-dv ol { list-style: decimal; padding-left: 1.4em; }
+.prose-dv blockquote { border-left: 2px solid var(--color-raspberry); padding-left: 1.2em; font-family: var(--font-display); font-size: 1.35rem; color: var(--color-indigo); }
+.prose-dv table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.prose-dv th, .prose-dv td { border-bottom: 1px solid var(--color-line); padding: .6em .4em; text-align: left; }
+.prose-dv img { border-radius: 6px 28px 6px 6px; }
+.prose-dv strong { color: var(--color-ink); }
