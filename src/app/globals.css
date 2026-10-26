@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* The PHP copy of the site builds its own CSS (php/dev/tailwind.css); keep its classes out of this one. */
+@source not "../../php";
 
 /* Dhanvesttor design tokens — see docs/brand/direction-board.html */
 @theme {

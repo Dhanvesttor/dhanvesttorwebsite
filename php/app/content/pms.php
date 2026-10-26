@@ -1,0 +1,85 @@
+<?php
+// Generated from src/content/pms.ts by php/dev/export-content.mjs. Edit the source and re-run.
+return [
+  'pms' => [
+    'fundName' => 'Dhanvesttor FAITH Fund',
+    'strategy' => 'FAITH Strategy',
+    'type' => 'Discretionary PMS',
+    'category' => 'Multi cap & flexi cap',
+    'inception' => 'April 2024',
+    'benchmark' => 'BSE 500 TRI',
+    'custodian' => 'Kotak Mahindra Bank (custodian and fund accountant)',
+    'fundManager' => 'Ishan Daga',
+    'minimum' => '₹50 lakh',
+    'mode' => 'Cash, stocks, or both',
+    'fees' => [
+      'fixedPct' => 2,
+      'performancePct' => 20,
+      'hurdlePct' => 10,
+      'highWaterMark' => true,
+      'exitLoadPct' => 1.5,
+      'exitLoadWindow' => 'withdrawal within one year',
+      'operatingPct' => 0.1,
+    ],
+    'faith' => [
+      [
+        'letter' => 'F',
+        'title' => 'Fundamentals and future',
+        'text' => 'Companies with sound fundamentals and healthy prospects.',
+      ],
+      [
+        'letter' => 'A',
+        'title' => 'Allocation of capital',
+        'text' => 'A prudent capital-allocation policy is central to how we pick stocks.',
+      ],
+      [
+        'letter' => 'I',
+        'title' => 'Intrinsic value',
+        'text' => 'Valuation parameters that measure the gap between price and value.',
+      ],
+      [
+        'letter' => 'T',
+        'title' => 'Top management and moat',
+        'text' => 'Good corporate governance and a durable competitive edge.',
+      ],
+      [
+        'letter' => 'H',
+        'title' => 'High principles',
+        'text' => 'A clear negative list keeps the portfolio in high-principled companies.',
+      ],
+    ],
+    'dos' => [
+      'Strong fundamentals and a moat',
+      'Promising growth prospects',
+      'Margin of safety',
+      'Prudent capital allocation',
+      'ESG focus and clean management',
+    ],
+    'donts' => [
+      'High pledged promoter holding',
+      'Over-aggression',
+      'Related-party transactions',
+      'Auditor qualifications',
+      'Poor corporate governance',
+      'Animal cruelty',
+    ],
+    'fourDs' => [
+      [
+        'title' => 'Dream',
+        'text' => 'We start with what you want your money to do.',
+      ],
+      [
+        'title' => 'Depend',
+        'text' => 'You get a named manager and a process you can see.',
+      ],
+      [
+        'title' => 'Develop',
+        'text' => 'A portfolio built around your goals, not a template.',
+      ],
+      [
+        'title' => 'Deliver',
+        'text' => 'Monthly reporting, quarterly reviews, no surprises.',
+      ],
+    ],
+  ],
+];

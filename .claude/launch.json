@@ -2,6 +2,7 @@
   "version": "0.0.1",
   "configurations": [
     { "name": "site", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev", "--", "--port", "3100"], "port": 3100 },
+    { "name": "php-site", "runtimeExecutable": "node", "runtimeArgs": ["php/dev/serve.mjs", "8080"], "port": 8080 },
     { "name": "docs-preview", "runtimeExecutable": "python3", "runtimeArgs": ["-m", "http.server", "8787", "--directory", "docs"], "port": 8787 }
   ]
 }

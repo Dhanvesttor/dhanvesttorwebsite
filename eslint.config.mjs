@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // The PHP site's browser scripts aren't Next.js code; Next's rules don't apply to them.
+    "php/**",
   ]),
 ]);
 

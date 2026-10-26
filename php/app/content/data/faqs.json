@@ -1,0 +1,20 @@
+[
+  { "group": "pms", "q": "What is the minimum investment for PMS?", "a": "₹50 lakh, which is the regulatory minimum for any portfolio management service in India. You can bring cash, existing shares, or both." },
+  { "group": "pms", "q": "Do I own the shares?", "a": "Yes. Unlike a mutual fund, where you own units of a pool, PMS shares sit in a demat account in your own name. You can see every holding." },
+  { "group": "pms", "q": "What are the fees?", "a": "A fixed fee of 2% a year, charged monthly, and a performance fee of 20% only on returns above a 10% hurdle, with a high-water mark. If you withdraw within the first year there is a 1.5% exit load. Operating expenses are capped at 0.1%." },
+  { "group": "pms", "q": "How is my portfolio reported?", "a": "You receive a monthly statement with every holding and transaction, quarterly reviews with the team, and a 24/7 client portal." },
+  { "group": "pms", "q": "How are PMS returns taxed?", "a": "As you own the shares directly, gains are taxed in your hands as capital gains on each sale, long-term or short-term depending on holding period. Dividends are taxed as income. We provide tax-ready statements; please consult your tax adviser." },
+  { "group": "pms", "q": "How long does onboarding take?", "a": "Usually 7 to 10 working days once documents are in. Our Compliance Officer works with the custodian on the account opening; your relationship manager keeps you informed at each step." },
+  { "group": "pms", "q": "Can I exit whenever I want?", "a": "Yes. PMS is open-ended. Withdrawals within the first year carry a 1.5% exit load; after that there is none." },
+  { "group": "pms", "q": "Will you tell me what you hold before I invest?", "a": "We share sector and market-cap allocation and the FAITH framework before you invest, and full stock-level disclosure every month after. Pre-investment non-disclosure protects the strategy for existing clients." },
+  { "group": "mf", "q": "What is the minimum to start?", "a": "₹5,000 a month through a SIP, or a one-time lumpsum. Many clients begin smaller than they expected and scale up." },
+  { "group": "mf", "q": "Direct or regular plans?", "a": "We distribute regular plans and are paid a commission by the fund house; direct plans are available from the fund house without one. What you pay us for is selection, allocation and the discipline to stay invested." },
+  { "group": "mf", "q": "What do I need for KYC?", "a": "PAN, Aadhaar, a bank account and a photograph. Most KYC is completed online in a day." },
+  { "group": "mf", "q": "How are mutual funds taxed?", "a": "Equity funds held over a year are taxed as long-term capital gains above the annual exemption; under a year, short-term. Debt funds are taxed at your slab. Rules change; we will tell you when they do." },
+  { "group": "mf", "q": "Can I stop or pause a SIP?", "a": "Yes, at any time, without penalty. ELSS investments have a three-year lock-in per instalment." },
+  { "group": "clcb", "q": "Does CLCB cost anything?", "a": "No. CLCB is free and there is no sales pitch. Many participants never become clients, and that is fine." },
+  { "group": "clcb", "q": "I know nothing about finance. Is it for me?", "a": "Especially for you. Some of the sharpest questions we hear come from women who thought they did not understand finance. CLCB gives you the language." },
+  { "group": "clcb", "q": "Where are sessions held?", "a": "In Kolkata, in partner institutions across Bengal, and online. We are expanding to North and West India." },
+  { "group": "general", "q": "Is Dhanvesttor regulated?", "a": "Yes. Driv Drisht LLP, which operates as Dhanvesttor, is registered with SEBI as a Portfolio Manager, Registration No. INP000008570, and is an AMFI-registered mutual fund distributor." },
+  { "group": "general", "q": "Do you work only with women?", "a": "Dhanvesttor was designed by women, for women, and most of our clients are women. Anyone who values a dialogue over a pitch is welcome." }
+]

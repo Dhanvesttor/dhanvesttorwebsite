@@ -1,0 +1,5 @@
+# Server-specific settings and runtime files
+app/config.php
+app/storage/cache/*
+app/storage/ratelimit/*
+!app/storage/cache/.gitkeep
