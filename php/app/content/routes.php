@@ -1,0 +1,346 @@
+<?php
+// Generated from src/content/routes.ts by php/dev/export-content.mjs. Edit the source and re-run.
+return [
+  'staticRoutes' => [
+    [
+      'path' => '/',
+      'priority' => 1,
+      'changeFrequency' => 'weekly',
+    ],
+    [
+      'path' => '/about',
+      'priority' => 0.8,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/about/purpose',
+      'priority' => 0.6,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/about/team',
+      'priority' => 0.7,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/contact',
+      'priority' => 0.7,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/login',
+      'priority' => 0.5,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/pms',
+      'priority' => 0.9,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/pms/faith-fund',
+      'priority' => 0.9,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/pms/philosophy',
+      'priority' => 0.7,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/pms/who-is-it-for',
+      'priority' => 0.7,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/pms/fees',
+      'priority' => 0.8,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/pms/pms-vs-mutual-funds',
+      'priority' => 0.8,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/pms/faqs',
+      'priority' => 0.6,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/mutual-funds',
+      'priority' => 0.9,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/mutual-funds/how-we-select',
+      'priority' => 0.7,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/mutual-funds/partners',
+      'priority' => 0.8,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/mutual-funds/equity',
+      'priority' => 0.7,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/mutual-funds/debt',
+      'priority' => 0.7,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/mutual-funds/hybrid',
+      'priority' => 0.6,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/mutual-funds/index-etf',
+      'priority' => 0.6,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/mutual-funds/elss',
+      'priority' => 0.7,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/mutual-funds/solution-oriented',
+      'priority' => 0.5,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/mutual-funds/sip',
+      'priority' => 0.8,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/mutual-funds/stp-swp',
+      'priority' => 0.6,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/mutual-funds/faqs',
+      'priority' => 0.6,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/clcb',
+      'priority' => 0.9,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/clcb/programmes',
+      'priority' => 0.7,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/clcb/events',
+      'priority' => 0.8,
+      'changeFrequency' => 'weekly',
+    ],
+    [
+      'path' => '/clcb/gallery',
+      'priority' => 0.5,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/clcb/stories',
+      'priority' => 0.6,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/clcb/join',
+      'priority' => 0.8,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/clcb/partners',
+      'priority' => 0.5,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/insurance',
+      'priority' => 0.7,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/insurance/health',
+      'priority' => 0.6,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/insurance/property-motor',
+      'priority' => 0.5,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/insurance/business',
+      'priority' => 0.5,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/bonds',
+      'priority' => 0.7,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/bonds/bonds-ncds',
+      'priority' => 0.6,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/bonds/corporate-fds',
+      'priority' => 0.6,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/bonds/structured-products',
+      'priority' => 0.5,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/calculators',
+      'priority' => 0.8,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/calculators/sip',
+      'priority' => 0.8,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/calculators/step-up-sip',
+      'priority' => 0.7,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/calculators/lumpsum',
+      'priority' => 0.7,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/calculators/swp',
+      'priority' => 0.7,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/calculators/stp',
+      'priority' => 0.5,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/calculators/goal',
+      'priority' => 0.7,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/calculators/retirement',
+      'priority' => 0.7,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/calculators/child-education',
+      'priority' => 0.6,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/calculators/cagr',
+      'priority' => 0.6,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/calculators/inflation',
+      'priority' => 0.6,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/calculators/pms-fee',
+      'priority' => 0.7,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/insights',
+      'priority' => 0.8,
+      'changeFrequency' => 'daily',
+    ],
+    [
+      'path' => '/insights/newsletter',
+      'priority' => 0.5,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/careers',
+      'priority' => 0.6,
+      'changeFrequency' => 'weekly',
+    ],
+    [
+      'path' => '/careers/life-at-dhanvesttor',
+      'priority' => 0.5,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/careers/roles',
+      'priority' => 0.6,
+      'changeFrequency' => 'weekly',
+    ],
+    [
+      'path' => '/media',
+      'priority' => 0.5,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/media/kit',
+      'priority' => 0.3,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/regulatory',
+      'priority' => 0.5,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/regulatory/disclosure-document',
+      'priority' => 0.5,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/regulatory/investor-charter',
+      'priority' => 0.4,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/regulatory/grievance',
+      'priority' => 0.5,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/regulatory/complaints-data',
+      'priority' => 0.4,
+      'changeFrequency' => 'monthly',
+    ],
+    [
+      'path' => '/regulatory/privacy',
+      'priority' => 0.3,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/regulatory/disclaimer',
+      'priority' => 0.3,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/regulatory/accessibility',
+      'priority' => 0.3,
+      'changeFrequency' => 'yearly',
+    ],
+    [
+      'path' => '/sitemap-page',
+      'priority' => 0.2,
+      'changeFrequency' => 'monthly',
+    ],
+  ],
+];

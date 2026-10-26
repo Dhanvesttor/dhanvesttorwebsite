@@ -1,0 +1,41 @@
+# Hostinger (LiteSpeed/Apache): every request that isn't a real file goes to index.php.
+Options -Indexes
+DirectoryIndex index.php
+AddDefaultCharset utf-8
+AddType font/woff2 .woff2
+AddType text/javascript .js
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Once SSL is active on the domain, uncomment to send everyone to https://dhanvesttor.com (no www).
+  # RewriteCond %{HTTPS} off [OR]
+  # RewriteCond %{HTTP_HOST} ^www\. [NC]
+  # RewriteRule ^ https://dhanvesttor.com%{REQUEST_URI} [L,R=301]
+
+  # Hidden files (.git, .env…) and the app folder, if it was uploaded inside public_html, are never served.
+  # /.well-known stays open for SSL certificate checks.
+  RewriteRule (^|/)\.(?!well-known/) - [F]
+  RewriteRule ^app(/|$) - [F]
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^ index.php [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  # CSS and JS are linked with ?v=<version>, so browsers can keep them for a year.
+  <FilesMatch "\.(css|js|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(webp|png|jpg|jpeg|svg|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml text/javascript application/javascript application/json application/xml image/svg+xml
+</IfModule>
