@@ -64,51 +64,53 @@ function range_field(string $calc, array $f): string
         . '</div>';
 }
 
-function result_card(array $ui): string
+/** $res: the calculator's results for its default values (calc_results), so the card arrives filled in. */
+function result_card(array $ui, array $res): string
 {
     $sw = ['indigo' => 'bg-indigo', 'raspberry' => 'bg-raspberry', 'marigold' => 'bg-marigold', 'sand' => 'bg-sand'];
     $rows = '';
     foreach ($ui['rows'] as $r) {
         $rows .= '<div class="flex items-center justify-between gap-4"><dt class="flex items-center gap-2 text-ivory/75">' . (isset($r[2]) ? '<span class="h-2.5 w-2.5 shrink-0 rounded-sm ' . $sw[$r[2]] . '"></span>' : '')
-            . '<span data-out-label="' . $r[0] . '">' . e($r[1]) . '</span></dt><dd class="text-right font-medium" data-out="' . $r[0] . '">—</dd></div>';
+            . '<span data-out-label="' . $r[0] . '">' . e($res['labels'][$r[0]] ?? $r[1]) . '</span></dt><dd class="text-right font-medium" data-out="' . $r[0] . '">' . e($res['rows'][$r[0]]) . '</dd></div>';
     }
-    return '<div class="rounded-2xl bg-indigo p-7 text-ivory"><p class="eyebrow text-marigold" data-out-label="headline">' . e($ui['label']) . '</p>'
-        . '<p aria-live="polite" class="mt-3 font-display text-[2.75rem] font-light leading-none sm:text-[3.25rem]" data-out="headline">—</p>'
+    return '<div class="rounded-2xl bg-indigo p-7 text-ivory"><p class="eyebrow text-marigold" data-out-label="headline">' . e($res['labels']['headline'] ?? $ui['label']) . '</p>'
+        . '<p aria-live="polite" class="mt-3 font-display text-[2.75rem] font-light leading-none sm:text-[3.25rem]" data-out="headline">' . e($res['headline']) . '</p>'
         . '<dl class="mt-7 grid gap-3 border-t border-ivory/15 pt-5 text-[14px]">' . $rows . '</dl>'
         . (!empty($ui['note']) ? '<p class="mt-5 text-[12px] leading-relaxed text-ivory/60">' . e($ui['note']) . '</p>' : '')
         . '</div>';
 }
 
-/** Two-series SVG area chart; calculators.js draws into the empty <svg>. */
-function growth_chart(string $a, string $b): string
+/** Two-series SVG area chart, drawn here for the default values; calculators.js redraws it live. */
+function growth_chart(string $a, string $b, array $points, string $xPrefix = 'Yr '): string
 {
+    $c = chart_svg($points, $a, $b, $xPrefix);
     return '<figure class="rounded-2xl border border-line bg-white p-4 sm:p-5" data-chart>'
         . '<figcaption class="mb-3 flex flex-wrap items-center gap-x-5 gap-y-1 text-[12.5px] text-mist">'
         . '<span class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-sm bg-sand ring-1 ring-terracotta/40"></span>' . e($a) . '</span>'
         . '<span class="flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-sm bg-indigo"></span>' . e($b) . '</span>'
-        . '<span class="ml-auto font-medium text-ink" data-chart-readout></span></figcaption>'
-        . '<svg viewBox="0 0 640 260" class="h-auto w-full touch-pan-y" role="img" aria-label="' . e($b) . ' compared with ' . e(strtolower($a)) . '" data-chart-svg></svg></figure>';
+        . '<span class="ml-auto font-medium text-ink" data-chart-readout>' . e($c['readout']) . '</span></figcaption>'
+        . '<svg viewBox="0 0 640 260" class="h-auto w-full touch-pan-y" role="img" aria-label="' . e($c['aria']) . '" data-chart-svg>' . $c['svg'] . '</svg></figure>';
 }
 
 function calculator(string $slug, bool $compact = false): string
 {
     $ui = calc_ui($slug);
     $inputs = '';
+    $values = [];
     foreach ($ui['fields'] as $f) {
-        if (isset($f['group'])) {
-            $inputs .= '<div class="grid gap-8 ' . $f['group'] . '">' . implode('', array_map(fn($x) => range_field($slug, $x), $f['fields'])) . '</div>';
-        } else {
-            $inputs .= range_field($slug, $f);
-        }
+        $group = isset($f['group']) ? $f['fields'] : [$f];
+        foreach ($group as $x) $values[$x['key']] = $x['value'];
+        $html = implode('', array_map(fn($x) => range_field($slug, $x), $group));
+        $inputs .= isset($f['group']) ? '<div class="grid gap-8 ' . $f['group'] . '">' . $html . '</div>' : $html;
     }
     $inputs .= $ui['extra'] ?? '';
-    $noscript = '<noscript><p class="text-[13px] text-mist">Turn on JavaScript to see the results.</p></noscript>';
+    $res = calc_results($slug, $values);
     if ($compact) {
         return '<div data-calc="' . $slug . '" class="grid gap-6 lg:grid-cols-2"><div class="grid content-start gap-7 rounded-2xl border border-line bg-white p-6">' . $inputs
-            . '<a href="/calculators" class="text-[13px] font-medium text-raspberry underline underline-offset-4">Eleven more calculators →</a>' . $noscript . '</div>' . result_card($ui) . '</div>';
+            . '<a href="/calculators" class="text-[13px] font-medium text-raspberry underline underline-offset-4">Eleven more calculators →</a></div>' . result_card($ui, $res) . '</div>';
     }
     return '<div data-calc="' . $slug . '"><div class="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:gap-12">'
-        . '<div class="grid content-start gap-8 rounded-2xl border border-line bg-white p-6 sm:p-8">' . $inputs . $noscript . '</div>'
-        . '<div class="grid content-start gap-6">' . result_card($ui) . (!empty($ui['chart']) ? growth_chart($ui['chart'][0], $ui['chart'][1]) : '') . '</div></div>'
+        . '<div class="grid content-start gap-8 rounded-2xl border border-line bg-white p-6 sm:p-8">' . $inputs . '</div>'
+        . '<div class="grid content-start gap-6">' . result_card($ui, $res) . (!empty($ui['chart']) ? growth_chart($ui['chart'][0], $ui['chart'][1], $res['points'], ($res['xPrefix'] ?? 'Yr') === 'M' ? 'M' : 'Yr ') : '') . '</div></div>'
         . '<p class="mt-6 max-w-[90ch] text-[12px] leading-relaxed text-mist">' . e(disclaimers()['calculators']) . '</p></div>';
 }

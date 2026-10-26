@@ -6,7 +6,7 @@ $facts = [['Legal name', $s['legalName']], ['Brand', $s['name']], ['Founded', '2
 <?= page_hero(['compact' => true, 'crumbs' => [['name' => 'Media', 'path' => '/media'], ['name' => 'Media kit', 'path' => '/media/kit']], 'eyebrow' => 'Media kit', 'title' => 'Facts, logos and <em>a contact.</em>']) ?>
 
 <?= section([], function () use ($facts) { ?>
-  <div class="grid gap-14 lg:grid-cols-2">
+  <div class="grid gap-14 lg:grid-cols-2 [&>*]:min-w-0">
     <div>
       <h2 class="text-[1.9rem]">Boilerplate</h2>
       <p class="mt-4 text-[1.05rem] text-[#3f3d5c]">Dhanvesttor, operated by Driv Drisht LLP, is a SEBI-registered portfolio manager (INP000008570) headquartered in Kolkata. Founded by Anooshka Soham Bathwal, the firm offers portfolio management through its flagship FAITH Fund, mutual fund distribution across more than twenty fund houses, insurance and fixed income. Its Co-Learning and Community Building (CLCB) programme provides free financial education to women and girls across India.</p>

@@ -13,6 +13,10 @@ npm run build
 
 No environment variables are needed to run locally. Without `WORDPRESS_GRAPHQL_URL` the site reads the seed content in `content/`; without SMTP settings, forms log submissions to the console.
 
+## PHP version
+
+`php/` holds the same site in plain PHP 8.1+, for hosting on any Hostinger plan without Node.js: same pages, URLs, text, design and SEO. Run it with `npm run php:serve` (http://localhost:8080); deploy it with `deploy/hostinger-php.md`.
+
 ## Where things live
 
 | What | Where |
@@ -25,6 +29,7 @@ No environment variables are needed to run locally. Without `WORDPRESS_GRAPHQL_U
 | Calculators (pure functions, tested) | `src/lib/calc/` |
 | CMS adapter (WordPress with local fallback) | `src/lib/cms/` |
 | WordPress plugin | `wordpress/dhanvesttor-headless/` |
-| Deployment | `deploy/hostinger.md` |
+| Deployment | `deploy/hostinger.md` (Next.js), `deploy/hostinger-php.md` (PHP) |
+| PHP version: pages, components, content | `php/app/pages/`, `php/app/lib/`, `php/app/content/` |
 | Editors' guide for marketing and HR | `docs/editors-guide.md` |
 | Brand direction | `docs/brand/direction-board.html` |

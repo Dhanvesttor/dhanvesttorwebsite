@@ -4,8 +4,8 @@ import { sip, stepUpSip, lumpsum, swp, stp, goal, retirement, childEducation, ca
 
 const series = (s) => s.map((p) => ({ x: p.year, a: p.invested, b: p.value }));
 
-/** slug -> (values) => { headline, rows, labels?, points?, xLabel? } */
-const compute = {
+/** slug -> (values) => { headline, rows, labels?, points?, xLabel? }  (exported for php/tests/calc-parity.mjs) */
+export const compute = {
   sip: (v) => {
     const r = sip({ monthly: v.m, annualRatePct: v.r, years: v.y });
     return { headline: inrShort(r.value), rows: { invested: inr(r.invested), gain: inr(r.gain), value: inr(r.value) }, points: series(r.series) };
@@ -153,4 +153,4 @@ function bind(root) {
   update();
 }
 
-document.querySelectorAll("[data-calc]").forEach(bind);
+if (typeof document !== "undefined") document.querySelectorAll("[data-calc]").forEach(bind);

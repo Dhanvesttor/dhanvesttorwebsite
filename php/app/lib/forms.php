@@ -79,7 +79,10 @@ function same_origin(): bool
     return strcasecmp((string) parse_url($origin, PHP_URL_HOST), (string) preg_replace('/:\d+$/', '', $_SERVER['HTTP_HOST'] ?? '')) === 0;
 }
 
-/** At most 8 submissions per visitor per 10 minutes. */
+/**
+ * At most 20 sent messages per IP address per 10 minutes. Only valid submissions count, and the limit is
+ * generous because many mobile users in India share one carrier IP address.
+ */
 function rate_limited(): bool
 {
     $dir = APP_DIR . '/storage/ratelimit';
@@ -87,7 +90,7 @@ function rate_limited(): bool
     $file = $dir . '/' . md5($_SERVER['REMOTE_ADDR'] ?? 'unknown') . '.json';
     $now = time();
     $hits = array_values(array_filter(is_file($file) ? (json_decode((string) file_get_contents($file), true) ?: []) : [], fn($t) => $t > $now - 600));
-    if (count($hits) >= 8) return true;
+    if (count($hits) >= 20) return true;
     $hits[] = $now;
     @file_put_contents($file, json_encode($hits), LOCK_EX);
     return false;
@@ -97,7 +100,6 @@ function handle_form(string $form): void
 {
     if (!same_origin()) form_fail($form, [], 403);
     if (!empty($_POST['website'])) form_done($form); // honeypot: bots fill the hidden field; pretend success
-    if (rate_limited()) form_fail($form, [], 429);
 
     [$d, $errors] = validate_form($form, $_POST);
     $attachments = [];
@@ -107,6 +109,7 @@ function handle_form(string $form): void
         if ($cv) $attachments[] = $cv;
     }
     if ($errors) form_fail($form, $errors, 400);
+    if (rate_limited()) form_fail($form, [], 429);
 
     $mail = match ($form) {
         'enquiry' => ['subject' => 'Website enquiry · ' . PATH_LABEL[$d['path']] . ' · ' . $d['name'], 'reply_to' => $d['email'],

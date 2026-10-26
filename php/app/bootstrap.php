@@ -17,5 +17,6 @@ require APP_DIR . '/lib/home.php';
 require APP_DIR . '/lib/layout.php';
 require APP_DIR . '/lib/forms.php';
 require APP_DIR . '/lib/mail.php';
+require APP_DIR . '/lib/calc.php';
 require APP_DIR . '/lib/calculators.php';
 require APP_DIR . '/lib/router.php';

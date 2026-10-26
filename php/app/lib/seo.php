@@ -22,7 +22,7 @@ function meta_tags(array $meta): string
         return implode("\n", $out);
     }
 
-    $url = BASE_URL . $meta['path'];
+    $url = $meta['path'] === '/' ? BASE_URL : BASE_URL . $meta['path'];
     $image = $meta['image'] ?? BASE_URL . '/og-default.png';
     $type = $meta['type'] ?? 'website';
     $out[] = '<link rel="canonical" href="' . e($url) . '">';
@@ -41,8 +41,8 @@ function meta_tags(array $meta): string
 
 function json_ld(array $data): string
 {
-    $json = json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    return '<script type="application/ld+json">' . str_replace('<', '<', (string) $json) . '</script>';
+    // JSON_HEX_TAG writes < and > as < / >, so text like "</script>" can't end the tag early.
+    return '<script type="application/ld+json">' . json_encode($data, JSON_HEX_TAG | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
 }
 
 function organization_json_ld(): array
