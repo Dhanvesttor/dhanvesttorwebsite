@@ -1,5 +1,24 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { buildMetadata, faqJsonLd, breadcrumbJsonLd, organizationJsonLd } from "@/lib/seo";
+import robots from "@/app/robots";
+
+describe("robots", () => {
+  afterEach(() => vi.unstubAllEnvs());
+  it("allows crawling off Vercel", () => {
+    vi.stubEnv("VERCEL", "");
+    expect(robots().rules).toEqual([{ userAgent: "*", allow: "/", disallow: ["/api/", "/thank-you"] }]);
+  });
+  it("blocks crawling on a vercel.app review copy", () => {
+    vi.stubEnv("VERCEL", "1");
+    vi.stubEnv("VERCEL_PROJECT_PRODUCTION_URL", "dhanvesttorwebsite.vercel.app");
+    expect(robots().rules).toEqual([{ userAgent: "*", disallow: "/" }]);
+  });
+  it("allows crawling once Vercel serves dhanvesttor.com", () => {
+    vi.stubEnv("VERCEL", "1");
+    vi.stubEnv("VERCEL_PROJECT_PRODUCTION_URL", "dhanvesttor.com");
+    expect(robots().sitemap).toBe("https://dhanvesttor.com/sitemap.xml");
+  });
+});
 
 describe("seo helpers", () => {
   it("builds canonical and titled metadata", () => {
